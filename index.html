@@ -4,43 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>L'Awaié | 1on1コーチングセッション</title>
-<meta name="description" content="L'Awaié 1on1コーチングセッション。自分の感情に気づき、言葉にする6ヶ月の旅。先行案内を受付中。">
-
-<!-- OGP (画像は後で差し替え) -->
-<meta property="og:title" content="L'Awaié | 1on1コーチングセッション">
-<meta property="og:description" content="自分の感情に、気づく。言葉にする。ただそれだけの場所。">
-<meta property="og:type" content="website">
-<meta property="og:image" content="./ogp.jpg">
-<meta name="twitter:card" content="summary_large_image">
-
-<!-- Favicon (後で差し替え) -->
-<link rel="icon" href="./favicon.ico">
-
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&family=League+Spartan:wght@700;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --rose: #B8B0AE;
-    --rose-dark: #9A9290;
-    --teal: #3A5A62;
-    --teal-dark: #2A4650;
-    --periwinkle: #9AAAC8;
-    --periwinkle-dark: #7A8EAE;
     --white: #FFFFFF;
     --off-white: #F5F2EE;
-    --text-light: rgba(255,255,255,0.75);
+    --text-light: rgba(255,255,255,0.82);
+    --text-faint: rgba(255,255,255,0.45);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Serif JP', serif; overflow-x: hidden; }
 
-  body {
-    font-family: 'Noto Serif JP', serif;
-    background: var(--off-white);
-    color: var(--white);
-    overflow-x: hidden;
-  }
-
+  /* SECTIONS */
   section {
     min-height: 100vh;
     display: flex;
@@ -48,249 +25,247 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-    padding: 100px 40px;
+    padding: 120px 48px;
   }
 
-  .section-inner {
-    max-width: 680px;
+  .inner {
+    max-width: 640px;
     width: 100%;
     position: relative;
     z-index: 2;
   }
 
-  .bg-rose {
-    background-color: var(--rose-dark);
-    background-image:
-      radial-gradient(ellipse at 20% 50%, rgba(184,147,138,0.6) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 20%, rgba(140,107,99,0.4) 0%, transparent 50%),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  /* PHOTO BACKGROUNDS */
+  .bg-photo {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
-  .bg-teal {
-    background-color: var(--teal-dark);
-    background-image:
-      radial-gradient(ellipse at 70% 60%, rgba(44,74,78,0.8) 0%, transparent 60%),
-      radial-gradient(ellipse at 20% 30%, rgba(30,51,54,0.6) 0%, transparent 50%),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
-  }
-
-  .bg-periwinkle {
-    background-color: var(--periwinkle-dark);
-    background-image:
-      radial-gradient(ellipse at 30% 70%, rgba(138,155,191,0.5) 0%, transparent 60%),
-      radial-gradient(ellipse at 75% 25%, rgba(100,120,160,0.4) 0%, transparent 50%),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.2'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.09'/%3E%3C/svg%3E");
-  }
-
-  .bg-light {
-    background: var(--off-white);
-    color: #2C2C2C;
-  }
-
-  section::before {
+  /* OVERLAYS per section mood */
+  .overlay-dark::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.15) 0%, transparent 60%);
+    background: linear-gradient(160deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.5) 100%);
     z-index: 1;
-    pointer-events: none;
   }
 
+  .overlay-rose::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(120,90,85,0.55) 0%, rgba(80,60,55,0.3) 60%, rgba(100,75,70,0.55) 100%);
+    z-index: 1;
+  }
+
+  .overlay-teal::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(30,55,65,0.65) 0%, rgba(20,45,55,0.4) 60%, rgba(30,55,65,0.65) 100%);
+    z-index: 1;
+  }
+
+  .overlay-periwinkle::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(80,95,130,0.6) 0%, rgba(60,75,110,0.35) 60%, rgba(80,95,130,0.6) 100%);
+    z-index: 1;
+  }
+
+  /* LIGHT SECTION */
+  .bg-light {
+    background: var(--off-white);
+    min-height: auto;
+    padding: 100px 48px;
+  }
   .bg-light::before { display: none; }
 
-  .en-title {
-    font-family: 'League Spartan', sans-serif;
-    font-weight: 900;
-    font-size: clamp(52px, 9vw, 96px);
-    letter-spacing: -0.02em;
-    line-height: 0.95;
-    color: var(--white);
-    margin-bottom: 32px;
-  }
-
-  .en-title.dark { color: #2C2C2C; }
-
-  .en-sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    font-size: clamp(14px, 2vw, 18px);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-light);
-    margin-bottom: 16px;
-  }
-
-  .ja-body {
-    font-family: 'Noto Serif JP', serif;
-    font-weight: 200;
-    font-size: clamp(14px, 1.8vw, 16px);
-    line-height: 2.2;
-    color: var(--text-light);
-    margin-bottom: 24px;
-  }
-
-  .ja-body.dark { color: #5C5C5C; }
-
-  .ja-large {
-    font-family: 'Noto Serif JP', serif;
-    font-weight: 300;
-    font-size: clamp(18px, 2.5vw, 24px);
-    line-height: 2;
-    color: var(--white);
-  }
-
-  .divider {
-    width: 40px;
-    height: 1px;
-    background: rgba(255,255,255,0.3);
-    margin: 32px 0;
-  }
-
-  .divider.dark {
-    background: rgba(0,0,0,0.15);
-  }
-
-  #hero {
-    min-height: 100vh;
-    text-align: left;
-  }
-
-  #hero .brand-name {
+  /* TYPOGRAPHY */
+  .brand-name {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
     font-style: italic;
-    font-size: clamp(72px, 14vw, 160px);
+    font-size: clamp(80px, 15vw, 180px);
     line-height: 1;
     color: var(--white);
-    letter-spacing: -0.01em;
-    margin-bottom: 48px;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
     opacity: 0;
     transform: translateY(30px);
-    animation: fadeUp 1.2s ease forwards 0.3s;
+    animation: fadeUp 1.4s ease forwards 0.4s;
   }
 
-  #hero .hero-text {
+  .hero-text {
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 1s ease forwards 0.8s;
-  }
-
-  #hero .notice {
-    font-family: 'Noto Serif JP', serif;
-    font-weight: 200;
-    font-size: 12px;
-    color: rgba(255,255,255,0.45);
-    margin-top: 16px;
-    line-height: 1.8;
+    animation: fadeUp 1s ease forwards 1s;
   }
 
   @keyframes fadeUp {
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .form-section {
-    min-height: auto;
-    padding: 80px 40px;
-  }
-
-  .form-wrap {
-    max-width: 480px;
-    width: 100%;
-  }
-
-  .form-label {
+  .en-title {
     font-family: 'League Spartan', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: #8C7060;
-    margin-bottom: 8px;
+    font-weight: 900;
+    font-size: clamp(48px, 8.5vw, 88px);
+    letter-spacing: -0.02em;
+    line-height: 0.92;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+
+  .en-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(13px, 1.8vw, 17px);
+    letter-spacing: 0.22em;
+    color: var(--text-faint);
+    margin-bottom: 14px;
     display: block;
   }
 
-  .form-input {
+  .ja-body {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 200;
+    font-size: clamp(14px, 1.7vw, 16px);
+    line-height: 2.5;
+    color: var(--text-light);
+    margin-bottom: 20px;
+  }
+
+  .ja-large {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 300;
+    font-size: clamp(19px, 2.6vw, 26px);
+    line-height: 2.1;
+    color: var(--white);
+    margin: 28px 0;
+  }
+
+  .notice {
+    font-size: 11px;
+    font-weight: 200;
+    color: var(--text-faint);
+    margin-top: 14px;
+    line-height: 1.8;
+  }
+
+  hr.div {
+    width: 36px;
+    height: 1px;
+    background: rgba(255,255,255,0.28);
+    border: none;
+    margin: 28px 0;
+  }
+
+  .num {
+    position: absolute;
+    bottom: 32px;
+    right: 44px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.18);
+    z-index: 2;
+  }
+
+  /* JOURNEY */
+  .journey-block {
+    margin-top: 36px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .j-row {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .j-key {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 6px;
+  }
+  .j-val {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 200;
+    font-size: 15px;
+    color: var(--white);
+    line-height: 1.9;
+  }
+
+  /* FORM */
+  .form-wrap { max-width: 480px; width: 100%; }
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 300;
+    color: #2A2A2A;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .form-sub {
+    font-size: 12px;
+    color: #aaa;
+    font-weight: 200;
+    margin-bottom: 44px;
+    line-height: 1.8;
+  }
+  .f-label {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #aaa;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .f-input {
     width: 100%;
     border: none;
-    border-bottom: 1px solid rgba(140,112,96,0.3);
+    border-bottom: 1px solid rgba(0,0,0,0.12);
     background: transparent;
     padding: 12px 0;
     font-family: 'Noto Serif JP', serif;
     font-size: 15px;
-    color: #3C3C3C;
+    color: #3A3A3A;
     outline: none;
-    margin-bottom: 32px;
+    margin-bottom: 36px;
     transition: border-color 0.3s;
   }
+  .f-input::placeholder { color: rgba(0,0,0,0.18); }
+  .f-input:focus { border-bottom-color: #3A5A62; }
 
-  .form-input::placeholder { color: rgba(0,0,0,0.25); }
-  .form-input:focus { border-bottom-color: var(--rose); }
-
-  .form-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(28px, 4vw, 40px);
-    font-weight: 300;
-    color: #2C2C2C;
-    margin-bottom: 40px;
-  }
-
-  .btn-register {
+  .btn-reg {
     display: inline-block;
-    padding: 16px 48px;
-    background: var(--rose-dark);
+    padding: 17px 52px;
+    background: #2A4650;
     color: var(--white);
     font-family: 'Noto Serif JP', serif;
     font-size: 13px;
     font-weight: 300;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.2em;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
   }
-
-  .btn-register:hover {
-    background: var(--teal-dark);
-    transform: translateY(-2px);
-  }
-
-  .journey-table {
-    width: 100%;
-    margin: 40px 0;
-  }
-
-  .journey-row {
-    display: flex;
-    align-items: baseline;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-  }
-
-  .journey-key {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.5);
-    width: 120px;
-    flex-shrink: 0;
-  }
-
-  .journey-val {
-    font-family: 'Noto Serif JP', serif;
-    font-weight: 200;
-    font-size: 14px;
-    color: var(--white);
-    line-height: 1.7;
-  }
+  .btn-reg:hover { background: #7A8EAE; transform: translateY(-2px); }
 
   .btn-cta {
     display: inline-block;
-    margin-top: 40px;
-    padding: 18px 56px;
+    margin-top: 52px;
+    padding: 17px 52px;
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.4);
     color: var(--white);
     font-family: 'Noto Serif JP', serif;
     font-size: 13px;
@@ -300,236 +275,164 @@
     transition: all 0.4s ease;
     text-decoration: none;
   }
+  .btn-cta:hover { background: rgba(255,255,255,0.1); border-color: var(--white); transform: translateY(-2px); }
 
-  .btn-cta:hover {
-    background: rgba(255,255,255,0.12);
-    border-color: var(--white);
-    transform: translateY(-2px);
-  }
-
-  .section-num {
-    position: absolute;
-    bottom: 32px;
-    right: 40px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: rgba(255,255,255,0.2);
-    z-index: 2;
-  }
-
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.9s ease, transform 0.9s ease;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  /* FADE IN */
+  .fi { opacity: 0; transform: translateY(22px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .fi.on { opacity: 1; transform: translateY(0); }
+  .fi.d2 { transition-delay: 0.1s; }
+  .fi.d3 { transition-delay: 0.2s; }
+  .fi.d4 { transition-delay: 0.32s; }
 
   @media (max-width: 600px) {
     section { padding: 80px 28px; }
-    .journey-key { width: 90px; font-size: 11px; }
-    .journey-val { font-size: 13px; }
+    .bg-light { padding: 80px 28px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ① HERO -->
-<section id="hero" class="bg-rose">
-  <div class="section-inner">
+<!-- ① HERO：海辺を歩く白ワンピース -->
+<section class="bg-photo overlay-dark" style="background-image:url('img_hero.jpeg');">
+  <div class="inner">
     <div class="brand-name">L'Awaié</div>
     <div class="hero-text">
-      <p class="en-sub">1on1 Coaching Session</p>
+      <span class="en-sub">1on1 Coaching Session</span>
       <p class="ja-body">
         先行案内を受付中です。<br>
         登録いただいた方に<br>
         最新情報と特典をお届けします。
       </p>
-      <p class="notice">
-        ※ 登録してもご受講義務はないのでご安心ください。
-      </p>
+      <p class="notice">※ 登録してもご受講義務はありません。</p>
     </div>
   </div>
-  <span class="section-num">01</span>
+  <span class="num">01</span>
 </section>
 
-<!-- ② FORM 1 -->
-<section id="form-1" class="bg-light form-section">
-  <div class="form-wrap">
-    <p class="form-title">先行案内を受け取る</p>
-    <form action="https://formsubmit.co/ichiko.life15@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="【L'Awaié】先行案内に新規登録がありました">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="thanks.html">
-      <input type="text" name="_honey" style="display:none">
-
-      <label class="form-label" for="name1">Full Name</label>
-      <input class="form-input" id="name1" type="text" name="お名前" placeholder="お名前" required>
-      <label class="form-label" for="email1">Email</label>
-      <input class="form-input" id="email1" type="email" name="メールアドレス" placeholder="メールアドレス" required>
-      <button type="submit" class="btn-register">登録する</button>
-    </form>
-    <p style="font-size:11px;color:#aaa;margin-top:16px;font-family:'Noto Serif JP',serif;">
-      ご受講義務はありません
-    </p>
-  </div>
-</section>
-
-<!-- ③ WHAT IS -->
-<section class="bg-teal fade-in">
-  <div class="section-inner">
-    <p class="en-sub fade-in">What is</p>
-    <h2 class="en-title fade-in">L'Awaié?</h2>
-    <div class="divider fade-in"></div>
-    <p class="ja-large fade-in">
+<!-- ② WHAT IS：光る水面シルエット -->
+<section class="bg-photo overlay-teal" style="background-image:url('img_what.jpeg');">
+  <div class="inner">
+    <span class="en-sub fi">What is</span>
+    <h2 class="en-title fi d2">L'Awaié?</h2>
+    <hr class="div fi d3">
+    <p class="ja-large fi d3">
       自分の感情に、気づく。<br>
       言葉にする。<br>
       ただそれだけの場所。
     </p>
-    <div class="divider fade-in"></div>
-    <p class="ja-body fade-in">
+    <hr class="div fi d4">
+    <p class="ja-body fi d4">
       「直さなきゃいけない自分」を<br>
       探しに来なくていい。<br><br>
       ここは、自分の取扱説明書を<br>
       自分で書いていくための場所です。
     </p>
   </div>
-  <span class="section-num">02</span>
+  <span class="num">02</span>
 </section>
 
-<!-- ④ WHO YOU ARE -->
-<section class="bg-periwinkle">
-  <div class="section-inner">
-    <p class="en-sub fade-in">Who</p>
-    <h2 class="en-title fade-in">you are.</h2>
-    <div class="divider fade-in"></div>
-    <p class="ja-body fade-in">
+<!-- ③ WHO YOU ARE：横顔×青い花 -->
+<section class="bg-photo overlay-periwinkle" style="background-image:url('img_who.jpeg'); background-position: right center;">
+  <div class="inner">
+    <span class="en-sub fi">Who</span>
+    <h2 class="en-title fi d2">you are.</h2>
+    <hr class="div fi d3">
+    <p class="ja-body fi d3">
       自己否定をやめなきゃ、と焦る。<br>
       自分を理解しなきゃ、と焦る。<br>
       自分を好きにならなきゃ、と焦る。
     </p>
-    <p class="ja-large fade-in">
-      でも待って。
-    </p>
-    <div class="divider fade-in"></div>
-    <p class="ja-body fade-in">
+    <p class="ja-large fi d4">でも待って。</p>
+    <hr class="div fi d4">
+    <p class="ja-body fi d4">
       わからないままって、<br>
       本当にだめなこと？<br><br>
       あなたの繊細さは欠陥じゃなくて、<br>
       解像度の高さだから。
     </p>
   </div>
-  <span class="section-num">03</span>
+  <span class="num">03</span>
 </section>
 
-<!-- ⑤ UNFINISHED -->
-<section class="bg-rose">
-  <div class="section-inner" style="text-align:center;">
-    <h2 class="en-title fade-in" style="font-size:clamp(36px,6vw,72px);letter-spacing:0.02em;">
+<!-- ④ UNFINISHED：波打ち際シルエット -->
+<section class="bg-photo overlay-rose" style="background-image:url('img_unfinished.jpeg'); text-align:center;">
+  <div class="inner">
+    <h2 class="en-title fi" style="font-size:clamp(34px,5.5vw,68px);letter-spacing:0.04em;line-height:1.1;">
       UNFINISHED,<br>YET BEAUTIFUL.
     </h2>
-    <div class="divider fade-in" style="margin:32px auto;"></div>
-    <p class="ja-body fade-in" style="font-size:clamp(15px,2vw,18px);line-height:2.5;">
+    <hr class="div fi d2" style="margin:28px auto;">
+    <p class="ja-body fi d3" style="font-size:clamp(15px,2vw,18px);line-height:3;">
       完成しなくていい。<br><br>
       余白に気づくことが、<br>
       自分に戻ることだから。
     </p>
   </div>
-  <span class="section-num">04</span>
+  <span class="num">04</span>
 </section>
 
-<!-- ⑥ THE JOURNEY -->
-<section class="bg-teal">
-  <div class="section-inner">
-    <p class="en-sub fade-in">The</p>
-    <h2 class="en-title fade-in">Journey.</h2>
-    <div class="divider fade-in"></div>
-    <div class="journey-table fade-in">
-      <div class="journey-row">
-        <span class="journey-key">period</span>
-        <span class="journey-val">6ヶ月</span>
+<!-- ⑤ THE JOURNEY：カメラ持って歩く -->
+<section class="bg-photo overlay-teal" style="background-image:url('img_journey.jpeg');">
+  <div class="inner">
+    <span class="en-sub fi">The</span>
+    <h2 class="en-title fi d2">Journey.</h2>
+    <hr class="div fi d3">
+    <div class="journey-block fi d3">
+      <div class="j-row">
+        <span class="j-key">マンツーマンセッション</span>
+        <span class="j-val">あなただけのペースで、<br>深く向き合う時間。</span>
       </div>
-      <div class="journey-row">
-        <span class="journey-key">session</span>
-        <span class="journey-val">2週間に1回｜計12回｜各60〜90分</span>
-      </div>
-      <div class="journey-row">
-        <span class="journey-key">work</span>
-        <span class="journey-val">2週間に1回｜計12本のワーク動画</span>
-      </div>
-      <div class="journey-row">
-        <span class="journey-key">format</span>
-        <span class="journey-val">オンライン</span>
-      </div>
-      <div class="journey-row" style="border-bottom:none;">
-        <span class="journey-key">final</span>
-        <span class="journey-val">最後の1回は、直接会いに行く</span>
+      <div class="j-row" style="border-bottom:none;">
+        <span class="j-key">豊富なワーク動画</span>
+        <span class="j-val">必要なときに、何度でも。</span>
       </div>
     </div>
-    <p class="ja-body fade-in" style="margin-top:40px;">
-      毎週、自分と向き合う時間がある。<br>
-      6ヶ月後、あなたに会いに行きます。
-    </p>
   </div>
-  <span class="section-num">05</span>
+  <span class="num">05</span>
 </section>
 
-<!-- ⑦ LIVE YOUR PURPOSE -->
-<section class="bg-periwinkle">
-  <div class="section-inner" style="text-align:center;">
-    <h2 class="en-title fade-in" style="font-size:clamp(36px,5.5vw,68px);letter-spacing:0.02em;">
+<!-- ⑥ LIVE YOUR PURPOSE：花束で顔を隠す -->
+<section class="bg-photo overlay-periwinkle" style="background-image:url('img_purpose.jpeg'); text-align:center; background-position: top center;">
+  <div class="inner">
+    <h2 class="en-title fi" style="font-size:clamp(34px,5.5vw,68px);letter-spacing:0.03em;line-height:1.1;">
       LIVE YOUR<br>PURPOSE.
     </h2>
-    <div class="divider fade-in" style="margin:32px auto;"></div>
-    <p class="ja-body fade-in" style="font-size:clamp(15px,2vw,17px);line-height:2.5;">
+    <hr class="div fi d2" style="margin:28px auto;">
+    <p class="ja-body fi d3" style="font-size:clamp(15px,2vw,17px);line-height:2.8;">
       答えは、もうあなたの中にある。<br>
       気づいていないだけで、<br>
       言葉にしていないだけで。<br><br>
       自分の声を、一緒に聴きに行きましょう。
     </p>
-    <a href="#form-2" class="btn-cta fade-in">先行案内を受け取る</a>
+    <a href="#form" class="btn-cta fi d4">先行案内を受け取る</a>
   </div>
-  <span class="section-num">06</span>
+  <span class="num">06</span>
 </section>
 
-<!-- ⑧ FORM 2 -->
-<section id="form-2" class="bg-light form-section">
-  <div class="form-wrap">
-    <p class="form-title">先行案内を受け取る</p>
-    <form action="https://formsubmit.co/ichiko.life15@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="【L'Awaié】先行案内に新規登録がありました">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="thanks.html">
-      <input type="text" name="_honey" style="display:none">
-
-      <label class="form-label" for="name2">Full Name</label>
-      <input class="form-input" id="name2" type="text" name="お名前" placeholder="お名前" required>
-      <label class="form-label" for="email2">Email</label>
-      <input class="form-input" id="email2" type="email" name="メールアドレス" placeholder="メールアドレス" required>
-      <button type="submit" class="btn-register">登録する</button>
-    </form>
-    <p style="font-size:11px;color:#aaa;margin-top:16px;font-family:'Noto Serif JP',serif;">
-      ご受講義務はありません
-    </p>
+<!-- ⑦ FORM：本を読む白背景 -->
+<section id="form" class="bg-light" style="position:relative;">
+  <div style="position:absolute;right:0;top:0;bottom:0;width:40%;background:url('img_form.jpeg') center/cover no-repeat;opacity:0.18;"></div>
+  <div class="form-wrap" style="position:relative;z-index:2;">
+    <p class="form-title">先行案内を<br>受け取る</p>
+    <p class="form-sub">登録してもご受講義務はありません。</p>
+    <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+    <input type="hidden" name="_next" value="thanks.html">
+    <input type="hidden" name="_subject" value="L'Awaié 先行案内登録">
+    <input type="hidden" name="_captcha" value="false">
+    <label class="f-label">Full Name</label>
+    <input class="f-input" type="text" placeholder="お名前">
+    <label class="f-label">Email</label>
+    <input class="f-input" type="email" placeholder="メールアドレス">
+    <input type="hidden" name="_next" value="thanks.html">
+    <input type="hidden" name="_subject" value="L'Awaié 先行案内登録">
+    <button type="submit" class="btn-reg">登録する</button>
   </div>
 </section>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
